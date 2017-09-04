@@ -11,13 +11,16 @@ export class OrderService {
 
   getOrders() { 
 
+    // BECAUSE WE ARE USING AUTHHTTP INSTEAD OS STANDARED ANGULAR HTTP,
+    // WE DO NOT HAVE TO PASS IN THE TOKEN IN THE HEADER, THE AUTHHTTP
+    // JWT LIBARARY HANDLES THAT FOR US!
+     
+    // let headers = new Headers();
+    // let token = localStorage.getItem("token");
+    // headers.append('Authorization', 'Bearer ' + token);
+    // let options = new RequestOptions({ headers: headers })
 
-    let headers = new Headers();
-    let token = localStorage.getItem("token");
-    headers.append('Authorization', 'Bearer ' + token);
-    let options = new RequestOptions({ headers: headers })
-
-    return this.http.get('/api/orders', options)
+    return this.http.get('/api/orders')
       .map(response => response.json());
   }
 }
